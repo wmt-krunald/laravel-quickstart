@@ -45,9 +45,6 @@ pipeline {
 
             steps{
                 // Install dependencies, create a new .env file and generate a new key, just for testing
-                sh "curl -sS https://getcomposer.org/installer | php"
-                sh "php composer.phar install"
-
                 sh "cp .env.example .env"
                 sh "php artisan key:generate"
 
