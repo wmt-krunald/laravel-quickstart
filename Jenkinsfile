@@ -62,7 +62,7 @@ pipeline {
             }
             
             steps {
-                sh 'npm install netlify-cli'
+                sh 'npm install -D netlify-cli'
                 sh 'npx netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir build/ --prod'
                 echo 'this is main branch'
                 // echo "branch is ${params.branch}"
