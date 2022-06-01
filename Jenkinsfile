@@ -45,6 +45,7 @@ pipeline {
 
             steps{
                 // Install dependencies, create a new .env file and generate a new key, just for testing
+                sh "composer install"
                 sh "cp .env.example .env"
                 sh "php artisan key:generate"
 
@@ -69,7 +70,7 @@ pipeline {
                 sh "echo 'WE ARE DEPLOYING'"
             }
         }
-    }      // Any cleanup operations needed, whether we hit an error or not
+    }     // Any cleanup operations needed, whether we hit an error or not
 }
 
 
