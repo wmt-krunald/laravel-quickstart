@@ -45,9 +45,8 @@ pipeline {
 
             steps{
                 // Install dependencies, create a new .env file and generate a new key, just for testing
-                sh "apt update"
-                sh "composer install"
                 sh "cp .env.example .env"
+                sh "composer install"
                 sh "php artisan key:generate"
 
                 // Run any static asset building, if needed
