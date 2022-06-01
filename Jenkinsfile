@@ -56,11 +56,16 @@ pipeline {
 
 
         stage('deploy') {
-
+            environment {
+                NETLIFY_AUTH_TOKEN = credentials('NETLIFY_AUTH_TOKEN')
+                NETLIFY_SITE_ID = credentials('NETLIFY_SITE_ID')
+            }
+            
             steps {
-                // If we had ansible installed on the server, setup to run an ansible playbook
-                // sh "ansible-playbook -i ./ansible/hosts ./ansible/deploy.yml"
-                sh "echo 'WE ARE DEPLOYING'"
+                sh 'npm install netlify-cli'
+                sh 'npx netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir build/ --prod'
+                echo 'this is main branch'
+                // echo "branch is ${params.branch}"
             }
         }
     }     // Any cleanup operations needed, whether we hit an error or not
