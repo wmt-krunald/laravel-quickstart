@@ -3,7 +3,7 @@ name: Staging deployment
 on:
   push:
     tags:
-    - stage-*
+    - main
 
 jobs: 
   build:
